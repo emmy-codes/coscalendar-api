@@ -1,7 +1,5 @@
 from django.contrib import admin
-from django.apps import AppConfig
+from .models import Cosplay, CosPlan
 
-
-class CosPlanConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cosplans'
+admin.site.register(CosPlan)
+admin.site.register(Cosplay)

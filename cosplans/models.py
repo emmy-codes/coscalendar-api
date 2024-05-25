@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 
 class Cosplay(models.Model):
     cosplay_name = models.CharField(max_length=100)
-
+    # may add image upload to plan later on
     def __str__(self):
         return self.cosplay_name
 
 
 class CosPlan(models.Model):
     # the title of the cosplay associated with the task
+    cosplayer = models.ForeignKey(User, on_delete=models.CASCADE)
     cosplay = models.ForeignKey(Cosplay, on_delete=models.CASCADE)
     # the title of the to-do task
     cosplay_task = models.CharField(max_length=200)
@@ -18,13 +19,13 @@ class CosPlan(models.Model):
     in the calendar
     """
     due_date = models.DateField()
-    cosplay_notes = models.TextField()
-    
+    cosplay_notes = models.TextField(blank=True)
+
     class Meta:
         # composite key to ensure uniqueness using cosplay_name and cosplay
-        unique_together = ("cosplay", "cosplay_task")
+        unique_together = ("cosplayer", "cosplay_task")
         # order by closest to due date
         ordering = ["due_date"]
-    
+
     def __str__(self):
-        return f"{self.cosplay_task} for {self.cosplay}"
+        return f"{self.cosplay_task} for {self.cosplayer}"
