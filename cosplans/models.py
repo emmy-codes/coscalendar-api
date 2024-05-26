@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
+
 class Cosplay(models.Model):
     cosplay_name = models.CharField(max_length=100)
     # may add image upload to plan later on
