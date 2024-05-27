@@ -18,3 +18,7 @@ The project is a CosCalendar app - with a built-in calendar app for tracking tas
 [MinValueValidator](https://docs.djangoproject.com/en/5.0/ref/validators/#minvaluevalidator) - To ensure that cosplayers can't add a negative value to their budget calculating
 
 [apps.get_model](https://docs.djangoproject.com/en/5.0/ref/applications/#django.apps.apps.get_model) - imports the model name from the app label (in my instance "cosplans" app, "Cosplay" model)
+
+[StringRelatedField](https://www.django-rest-framework.org/api-guide/relations/#stringrelatedfield) - to show a string of the cosplay name rather than its id
+
+[read_only_fields](https://www.django-rest-framework.org/api-guide/serializers/#specifying-read-only-fields) - A sortcut I discovered to save having to use read_only=True in multiple places, your read-onlys can be stored here
