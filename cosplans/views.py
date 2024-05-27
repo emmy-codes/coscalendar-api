@@ -4,15 +4,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import CosPlan, Cosplay
 from .serializers import CosPlanSerializer
-from django.contrib.auth.models import User
 from coscalendar_api.permissions import IsCosplayerOrReadOnly
 
 
 class CosPlanList(APIView):
     serializer_class = CosPlanSerializer
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def get(self, request):
         cosplans = CosPlan.objects.all()
@@ -26,7 +23,8 @@ class CosPlanList(APIView):
             data=request.data, context={"request": request}
         )
         if serializer.is_valid():
-            serializer.save(cosplayer=request.user)  # Associate with the logged-in User directly
+            # Associate with the logged-in User directly
+            serializer.save(cosplayer=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -65,6 +63,4 @@ class CosPlanDetail(APIView):
     def delete(self, request, pk):
         cosplan = self.get_object(pk)
         cosplan.delete()
-        return Response(
-            status=status.HTTP_204_NO_CONTENT
-        )
+        return Response(status=status.HTTP_204_NO_CONTENT)

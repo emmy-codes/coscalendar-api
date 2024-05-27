@@ -8,6 +8,12 @@ class Cosplay(models.Model):
     # may add image upload to plan later on
     def __str__(self):
         return self.cosplay_name
+    
+    # calculation of expenses on each cosplay
+    def total_expenses(self):
+        CosExpense = apps.get_model('cosexpenses', 'CosExpense')
+        total = self.expenses.aggregate(Sum('unit_price'))['unit_price__sum']
+        return total or 0
 
 
 class CosPlan(models.Model):
