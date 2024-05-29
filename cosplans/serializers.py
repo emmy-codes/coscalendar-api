@@ -35,4 +35,4 @@ class CosPlanSerializer(serializers.ModelSerializer):
 
 
 class CosPlanDetailSerializer(CosPlanSerializer):
-    cosplayer = serializers.
+    cosplay = serializers.StringRelatedField(read_only=True)

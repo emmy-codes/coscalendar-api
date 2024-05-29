@@ -15,3 +15,7 @@ class CosExpenseSerializer(serializers.ModelSerializer):
     
     def get_total_cost(eslf, obj):
         return obj.total_cost
+
+
+class CosExpenseDetailSerializer(serializers.ModelSerializer):
+    cosplay = serializers.StringRelatedField(read_only=True)
