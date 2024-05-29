@@ -32,3 +32,7 @@ class CosPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = CosPlan
         fields = "__all__"
+
+
+class CosPlanDetailSerializer(CosPlanSerializer):
+    cosplayer = serializers.
