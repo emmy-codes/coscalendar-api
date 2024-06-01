@@ -67,7 +67,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "coscalendar-api.herokuapp.com/"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "coscalendar-api-3bdc9b15f518.herokuapp.com", "coscalendar-api.herokuapp.com/"]
 
 
 # Application definition
