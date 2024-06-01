@@ -1,7 +1,7 @@
 from django.urls import path
-from cosexpenses import views
+from .views import CosExpenseList, CosExpenseDetail
 
 urlpatterns = [
-    path("expenses/", views.CosExpenseList.as_view()),
-    path("expenses/<int:pk>/", views.CosExpenseDetail.as_view())
+    path("expenses/", CosExpenseList.as_view()),
+    path("expenses/<int:pk>/", CosExpenseDetail.as_view())
 ]
