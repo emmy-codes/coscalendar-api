@@ -36,8 +36,15 @@ REST_FRAMEWORK = {
         if "DEV" in os.environ
         # sessions in production
         else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
-    )]
+    )],
+    "DEFAULT_PAGINATION_CLASS":
+        "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 5,
 }
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer"
+    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
