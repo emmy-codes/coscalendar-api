@@ -43,15 +43,16 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 5,
     "DATETIME_FORMAT": "%d %b %Y",
     # defaults
-    "DEFAULT_RENDERER_CLASSES": (
+    "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
-        # exclude BrowsableAPIRenderer in production
-        if "DEV" in os.environ:
-            REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append(
-                "rest_framework.renderers.BrowsableAPIRenderer"
-            )
-    ),
+    ],
 }
+
+# exclude BrowsableAPIRenderer in production
+if "DEV" in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append(
+        "rest_framework.renderers.BrowsableAPIRenderer"
+    )
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -72,7 +73,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "coscalendar-api-3bdc9b15f518.herokuapp.com",  # noqa "coscalendar-api.herokuapp.com/"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "coscalendar-api-3bdc9b15f518.herokuapp.com",
+    "coscalendar-api.herokuapp.com/"
+    ]
 
 
 # Application definition
