@@ -21,7 +21,9 @@ dj-database-url==0.5.0
 dj-rest-auth==6.0.0
 Django==4.2.10
 django-allauth==0.61.1
+django-bootstrap4==24.3
 django-browser-reload==1.12.1
+django-clearcache==1.2.1
 django-cloudinary-storage==0.3.0
 django-cors-headers==4.3.1
 django-crispy-forms==2.1
@@ -51,6 +53,7 @@ oauthlib==3.2.2
 packaging==24.0
 pathspec==0.12.1
 pillow==10.2.0
+pipdeptree==2.21.0
 platformdirs==4.2.0
 pluggy==1.0.0
 psycopg==3.1.18
