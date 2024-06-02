@@ -19,7 +19,7 @@ class UserProfileList(APIView):
 class UserProfileDetail(APIView):
     permission_classes = [IsCosplayerOrReadOnly]
     serializer_class = UserProfileSerializer
-    
+
     def get_object(self, pk):
         try:
             user_profile = UserProfile.objects.get(pk=pk)
@@ -27,7 +27,7 @@ class UserProfileDetail(APIView):
             return user_profile
         except UserProfile.DoesNotExist:
             raise Http404
-    
+
     def get(self, request, pk):
         user_profile = self.get_object(pk)
         serializer = UserProfileSerializer(
@@ -40,8 +40,9 @@ class UserProfileDetail(APIView):
         serializer = UserProfileSerializer(
             user_profile, data=request.data, context={"request": request}
         )
-        
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        

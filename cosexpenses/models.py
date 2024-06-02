@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator
 
 
 class CosExpense(models.Model):
-    
+
     # connects the expense to a specific cosplay
     cosplayer = models.ForeignKey(User, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=100)
@@ -20,6 +20,6 @@ class CosExpense(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.item_name} for {self.cosplayer}"
-    
+
     class Meta:
         ordering = ['item_name']

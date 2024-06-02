@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 
 class Cosplay(models.Model):
     cosplay_name = models.CharField(max_length=100)
+
     # may add image upload to plan later on
     def __str__(self):
         return self.cosplay_name
-    
+
     # calculation of expenses on each cosplay
     def total_expenses(self):
         CosExpense = apps.get_model('cosexpenses', 'CosExpense')
@@ -22,7 +23,7 @@ class CosPlan(models.Model):
     cosplay = models.ForeignKey(Cosplay, on_delete=models.CASCADE)
     # the title of the to-do task
     cosplay_task = models.CharField(max_length=200)
-    """ due date from the task which is calculated when clicking the date 
+    """ due date from the task which is calculated when clicking the date
     in the calendar
     """
     due_date = models.DateField()

@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView  # noqa
 from .models import CosExpense
 from .serializers import CosExpenseSerializer, CosExpenseDetailSerializer
 from coscalendar_api.permissions import IsCosplayerOrReadOnly
@@ -10,7 +10,7 @@ class CosExpenseList(ListCreateAPIView):
     serializer_class = CosExpenseSerializer
     permission_classes = [IsCosplayerOrReadOnly]
     pagination_class = PageNumberPagination
-    
+
 
 class CosExpenseDetail(RetrieveUpdateDestroyAPIView):
     queryset = CosExpense.objects.all()
