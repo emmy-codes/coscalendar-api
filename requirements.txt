@@ -14,7 +14,6 @@ click==8.1.7
 cloudinary==1.38.0
 cookiecutter==2.6.0
 coverage==7.4.1
-crispy-bootstrap5==2024.2
 cryptography==42.0.4
 defusedxml==0.7.1
 dill==0.3.8

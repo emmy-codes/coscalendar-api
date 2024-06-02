@@ -84,6 +84,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "clearcache",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -207,7 +208,20 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "static",
+    ("rest_framework", BASE_DIR / "micromamba" / "lib" / "python3.9" / "site-packages" / "rest_framework" / "static"),
+]
+
+# Exclude Bootstrap files
+def _get_bootstrap_files():
+    import glob
+    return [
+        str(path).replace(str(BASE_DIR) + "/", "", 1)
+        for path in glob.glob(str(BASE_DIR / "micromamba" / "lib" / "python3.9" / "site-packages" / "rest_framework" / "static" / "rest_framework" / "css" / "*bootstrap*"))
+    ] 
+_bootstrap_files = _get_bootstrap_files()
+STATICFILES_IGNORE_PATTERNS = [
+    *_bootstrap_files
 ]
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'  # noqa
