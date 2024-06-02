@@ -42,11 +42,15 @@ REST_FRAMEWORK = {
         "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
     "DATETIME_FORMAT": "%d %b %Y",
+    # defaults
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer" 
+        if "DEV" in os.environ
+        # excludes BrowsableAPIRenderer in production
+        else []
+    ),
 }
-if "DEV" not in os.environ:
-    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
-        "rest_framework.renderers.JSONRenderer"
-    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
