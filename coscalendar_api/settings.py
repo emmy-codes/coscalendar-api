@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [(
-        #sessions in development
+        # sessions in development
         "rest_framework.authentication.SessionAuthentication"
         if "DEV" in os.environ
         # sessions in production
@@ -46,20 +46,21 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
         # exclude BrowsableAPIRenderer in production
-        # "rest_framework.renderers.BrowsableAPIRenderer" 
-        if "DEV" in os.environ
-        else []
+        if "DEV" in os.environ:
+            REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append(
+                "rest_framework.renderers.BrowsableAPIRenderer"
+            )
     ),
 }
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = "my-app-auth" # access token
-JWT_AUTH_REFRESH_COOKIE = "my-refresh-token" # refresh token
+JWT_AUTH_COOKIE = "my-app-auth"  # access token
+JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"  # refresh token
 JWT_AUTH_SAMESITE = "None"
 
 REST_AUTH_SERIALIZERS = {
-    "USER_DETAILS_SERIALIZER": "coscalendar_api.serializers.CurrentUserSeriailzer"
+    "USER_DETAILS_SERIALIZER": "coscalendar_api.serializers.CurrentUserSeriailzer"  # noqa
 }
 
 # Quick-start development settings - unsuitable for production
@@ -69,9 +70,9 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "coscalendar-api-3bdc9b15f518.herokuapp.com", "coscalendar-api.herokuapp.com/"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "coscalendar-api-3bdc9b15f518.herokuapp.com",  # noqa "coscalendar-api.herokuapp.com/"]
 
 
 # Application definition
@@ -98,7 +99,6 @@ INSTALLED_APPS = [
     "user_profiles",
     "cosplans",
     "cosexpenses",
-    
 ]
 
 SITE_ID = 1
@@ -124,7 +124,7 @@ else:
         r"^https://.*\.herokuapp\.com$",
     ]
 
-CORS_ALLOW_CREDENTIALS = True 
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "coscalendar_api.urls"
 
@@ -168,16 +168,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
     },
 ]
 
@@ -204,7 +204,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'  # noqa
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
