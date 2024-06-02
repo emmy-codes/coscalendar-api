@@ -45,9 +45,9 @@ REST_FRAMEWORK = {
     # defaults
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer" 
+        # exclude BrowsableAPIRenderer in production
+        # "rest_framework.renderers.BrowsableAPIRenderer" 
         if "DEV" in os.environ
-        # excludes BrowsableAPIRenderer in production
         else []
     ),
 }
