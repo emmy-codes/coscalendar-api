@@ -1,1 +1,7 @@
+*.cpython
+*.pyc
+__init__.py
+0001_initial.py
+db.sqlite3
+migrations/
 env.py
