@@ -11,10 +11,7 @@ urlpatterns = [
         )
     ),
     path("dj-rest-auth/", include("dj_rest_auth.urls")),
-    path("dj-rest-auth/registration/", include(
-        "dj_rest_auth.registration.urls"
-        )
-    ),
+    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
     path("dj-rest-auth/logout", logout_route),
     # Include user_profile URLs directly
     path("user_profiles/", user_profiles_views.UserProfileList.as_view()),

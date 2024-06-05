@@ -115,8 +115,8 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -128,20 +128,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = []
-CORS_ALLOWED_ORIGIN_REGEXES = []
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-elif 'DEV' in os.environ:
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^http:\/\/localhost:\d+$",
-    ]
-else:
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https://.*\.herokuapp\.com$",
-    ]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http:\/\/localhost:\d+$",
+    r"^https://.*\.herokuapp\.com$",
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
