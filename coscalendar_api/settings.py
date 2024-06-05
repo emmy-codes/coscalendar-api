@@ -32,11 +32,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [(
-        # sessions in development
-        "rest_framework.authentication.SessionAuthentication"
-        if "DEV" in os.environ
-        # sessions in production
-        else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        # # sessions in development
+        # "rest_framework.authentication.SessionAuthentication"
+        # if "DEV" in os.environ
+        # # sessions in production
+        # else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
     )],
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
@@ -46,11 +47,9 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated", 
-    ),
-
-    "REST_USE_JWT": True,
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
 }
 
 # exclude BrowsableAPIRenderer in production
@@ -76,7 +75,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get("ALLOWED_HOST"),
@@ -85,6 +84,7 @@ ALLOWED_HOSTS = [
     "coscalendar-api-3bdc9b15f518.herokuapp.com"
     ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -207,31 +207,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    ("rest_framework", BASE_DIR / "micromamba" / "lib" / "python3.9" / "site-packages" / "rest_framework" / "static"),
-]
-
-# Exclude Bootstrap files
-def _get_bootstrap_files():
-    import glob
-    return [
-        str(path).replace(str(BASE_DIR) + "/", "", 1)
-        for path in glob.glob(str(BASE_DIR / "micromamba" / "lib" / "python3.9" / "site-packages" / "rest_framework" / "static" / "rest_framework" / "css" / "*bootstrap*"))
-    ] 
-_bootstrap_files = _get_bootstrap_files()
-STATICFILES_IGNORE_PATTERNS = [
-    *_bootstrap_files
-]
-
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'  # noqa
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
