@@ -46,6 +46,11 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated", 
+    ),
+
+    "REST_USE_JWT": True,
 }
 
 # exclude BrowsableAPIRenderer in production
