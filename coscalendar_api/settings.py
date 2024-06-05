@@ -127,22 +127,21 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN')
-]
+CORS_ALLOWED_ORIGINS = []
+CORS_ALLOWED_ORIGIN_REGEXES = []
 
 if 'CLIENT_ORIGIN' in os.environ:
-        CORS_ALLOWED_ORIGINS = [
-            os.environ.get('CLIENT_ORIGIN')
-        ]
-    elif 'DEV' in os.environ:
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            r"^http:\/\/localhost:\d+$",
-        ]
-    else:
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            r"^https://.*\.herokuapp\.com$",
-        ]
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+elif 'DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^http:\/\/localhost:\d+$",
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.herokuapp\.com$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
