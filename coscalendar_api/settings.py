@@ -32,12 +32,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [(
-        # # sessions in development
-        # "rest_framework.authentication.SessionAuthentication"
-        # if "DEV" in os.environ
-        # # sessions in production
-        # else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        # sessions in development
+        "rest_framework.authentication.SessionAuthentication"
+        if "DEV" in os.environ
+        # sessions in production
+        else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
     )],
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
