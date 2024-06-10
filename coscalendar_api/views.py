@@ -1,10 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .settings import (
-    JWT_AUTH_COOKIE, JWT_AUTH_SAMESITE,
-    JWT_AUTH_SECURE,
-)
-
+from django.conf import settings
 
 @api_view()
 def root_route(request):
@@ -12,28 +8,31 @@ def root_route(request):
         "message": "Welcome to CosCalendars' API!"
     })
 
-# dj-rest-auth logout view fix
 
-
-@api_view(["POST"])
+@api_view(['POST'])
 def logout_route(request):
     response = Response()
+    
+    # Access JWT_AUTH_COOKIE through settings.REST_AUTH
     response.set_cookie(
-        key=JWT_AUTH_COOKIE,
+        key=settings.REST_AUTH['JWT_AUTH_COOKIE'],
         value="",
         httponly=True,
         expires="Thu, 01 Jan 1970 00:00:00 GMT",
         max_age=0,
-        samesite=JWT_AUTH_SAMESITE,
-        secure=JWT_AUTH_SECURE,
+        samesite=settings.REST_AUTH['JWT_AUTH_SAMESITE'],  # Access through settings.REST_AUTH
+        secure=settings.REST_AUTH['JWT_AUTH_SECURE'],    # Access through settings.REST_AUTH
     )
+    
+    # Access JWT_AUTH_REFRESH_COOKIE through settings.REST_AUTH
     response.set_cookie(
-        key=JWT_AUTH_COOKIE,
+        key=settings.REST_AUTH['JWT_AUTH_REFRESH_COOKIE'],
         value="",
         httponly=True,
         expires="Thu, 01 Jan 1970 00:00:00 GMT",
         max_age=0,
-        samesite=JWT_AUTH_SAMESITE,
-        secure=JWT_AUTH_SECURE,
+        samesite=settings.REST_AUTH['JWT_AUTH_SAMESITE'],  # Access through settings.REST_AUTH
+        secure=settings.REST_AUTH['JWT_AUTH_SECURE'],    # Access through settings.REST_AUTH
     )
+
     return response

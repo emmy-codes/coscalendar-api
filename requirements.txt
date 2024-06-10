@@ -7,8 +7,9 @@ defusedxml==0.7.1
 dill==0.3.8
 dj-database-url==0.5.0
 dj-rest-auth==6.0.0
-Django==4.2.10
+Django==4.2.13
 django-allauth==0.61.1
+django-bootstrap4==24.3
 django-browser-reload==1.12.1
 django-clearcache==1.2.1
 django-cloudinary-storage==0.3.0
@@ -81,3 +82,4 @@ webencodings==0.5.1
 Werkzeug==3.0.1
 whitenoise==6.6.0
 zipp==3.17.0
+zstandard==0.19.0
