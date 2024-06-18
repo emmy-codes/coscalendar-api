@@ -11,6 +11,7 @@ The project is a CosCalendar app - with a built-in calendar app for tracking tas
 * [External resources](#external-resources)
 	* [Resources used](#resources-used)
  * [Bug Fixes](#bug-fixes)
+ * [Deployment of API](#deployment-of-api)
 
 ## External resources
 
@@ -37,4 +38,26 @@ At first I tried fetching the model before calling it:
 ![api-bug-1-get_cosplay_model-trial](https://github.com/emmy-codes/coscalendar-api/assets/70635859/9e2ffa73-05c8-4d02-b159-ce7d0243d536)
 
 This resulted in an identical error. I tried [researching other references to the issue](https://forum.djangoproject.com/t/using-foreign-key/4972/7) but the solutions involved the settings.py or the init file which was an unnecessary workaround. Perhaps not a "fix" persay but I reverted to the tried and true method of importing the Cosplay model from cosplans.models and using it as the first parameter of my ForeignKey. Sometimes the easy answer is better than over-engineering!
+
+## Deployment of API
+
+This project is deployed on Heroku. Here are the steps I followed to deploy this project:
+
+1. Go to my dashboard and clicked on the New App dropdown menu
+2. Click Create new app from the options
+   ![heroku_deployment_step_1-2](https://github.com/emmy-codes/cat-adventures-python/assets/70635859/f5810840-3399-48aa-8944-384850e2f6d9)
+3. Name my app in the App name box
+4. Chose a region from the dropdown menu
+5. Click Create app
+![heroku_deployment_step_3-5](https://github.com/emmy-codes/cat-adventures-python/assets/70635859/be20a348-416c-446c-8876-2a33ccb883bb)
+6. After the app was created I went to the dashboard where I can select from my apps.
+7. Click the relevant app
+![heroku_deployment_step_7](https://github.com/emmy-codes/coscalendar-api/assets/70635859/7fb56f68-7407-4745-8c64-852381cab80a)
+8. Under the Deploy tab, I connected my Github repo to the Deployment method
+![heroku_deployment_step_8](https://github.com/emmy-codes/coscalendar-api/assets/70635859/ba3cac1e-94c3-4cd0-abc6-9a7ba42a7f37)
+9. Adding buildpacks: Go to settings, click on the Add buildpack button, select Python from the supported buildpacks, and Add Buildpack. This will allow Heroku to deploy successfully.
+![heroku_deployment_step_9](https://github.com/emmy-codes/coscalendar-api/assets/70635859/d98ca311-80be-4086-b40a-f04a7deb71fd)
+10. Scrolling down the page, I chose which branch to deploy, and then manually deployed my project, but it's possible to set up automatic deployments if preferred.
+![deploy-step-10](https://github.com/emmy-codes/coscalendar/assets/70635859/97582426-0d13-4c14-9570-0617ecf5efcb)
+
 
