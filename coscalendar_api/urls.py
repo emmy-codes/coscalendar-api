@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from user_profiles import views as user_profiles_views
 from .views import root_route, logout_route
+from cosplans import views as cosplans_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -22,6 +23,7 @@ urlpatterns = [
         user_profiles_views.UserProfileDetail.as_view()
     ),
     path("", include("cosplans.urls")),
+    path("cosplans/<int:pk>/", cosplans_views.CosPlanDetail.as_view()),
     path("", include("cosexpenses.urls")),
     path("", root_route),
 ]
