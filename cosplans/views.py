@@ -6,6 +6,7 @@ from coscalendar_api.permissions import IsCosplayerOrReadOnly
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import request
 
 
 class CosPlanList(ListCreateAPIView):
@@ -34,6 +35,12 @@ class CosPlanList(ListCreateAPIView):
                 {"error": "An error occurred while creating your CosPlan."},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
+
+class CosPlanListByDateRange(ListCreateAPIView):
+    def get_queryset(self):
+        return CosPlan.objects.filter(due_date__range=[self.request.query_params.get("startDate"), self.request.query_params.get("endDate")]).order_by("due_date")
+    serializer_class = CosPlanSerializer
+    permission_classes = [IsCosplayerOrReadOnly]
 
 
 class CosPlanDetail(RetrieveUpdateDestroyAPIView):
