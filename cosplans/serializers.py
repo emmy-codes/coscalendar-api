@@ -1,11 +1,10 @@
 from rest_framework import serializers
-from .models import CosPlan, Cosplay
+from .models import CosPlan
 
 
 class CosPlanSerializer(serializers.ModelSerializer):
+    # displays username instead of ID
     cosplayer = serializers.ReadOnlyField(source="cosplayer.username")
-    is_cosplayer = serializers.SerializerMethodField()
-    cosplay = serializers.PrimaryKeyRelatedField(queryset=Cosplay.objects.all(), default=serializers.CurrentUserDefault())  # noqa
 
     def get_is_cosplayer(self, obj):
         request = self.context["request"]
@@ -13,8 +12,11 @@ class CosPlanSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CosPlan
-        fields = "__all__"
-
-
-class CosPlanDetailSerializer(CosPlanSerializer):
-    cosplay = serializers.StringRelatedField(read_only=True)
+        fields = [
+            "id",
+            "cosplayer", # displays username instead of ID
+            "cosplay",
+            "cosplan_task",
+            "due_date",
+            "cosplan_details"
+        ]

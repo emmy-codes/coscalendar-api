@@ -26,7 +26,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
-    "DATETIME_FORMAT": "%d %b %Y",
+    "DATETIME_FORMAT": "%d-%m-%Y",
     # defaults
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
@@ -193,6 +193,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# force reformatting date format to match frontend
+
+USE_L10N = False
+
+DATE_FORMAT = "d-m-Y"
+
+DATE_INPUT_FORMATS = [
+    "%d-%m-%Y",
+    "%Y-%m-%d"
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
