@@ -12,6 +12,8 @@ class UserProfile(models.Model):
     profile_image = models.ImageField(
         upload_to='images/', default='../dpdnmyvepbgzchl71fjv'
     )
+    fave_cosplay = models.CharField(max_length=255, blank=True)
+    next_convention = models.CharField(max_length=255, blank=True)
 
     class Meta:
         ordering = ['created_at']
