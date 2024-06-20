@@ -16,7 +16,7 @@ class CosExpenseList(ListCreateAPIView):
     def get_queryset(self):
         queryset = CosExpense.objects.all()
         
-        # queryset = queryset.filter(Q(cosplayer=self.request.user) & Q(cosplan=self.request.query_params.get("cosplan_id")))
+        queryset = queryset.filter(Q(cosplayer=self.request.user) & Q(cosplan=self.request.query_params.get("cosplan_id")))
         return queryset
     
     def perform_create(self, serializer):
