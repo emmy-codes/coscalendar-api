@@ -8,8 +8,12 @@ from coscalendar_api.permissions import IsCosplayerOrReadOnly
 
 
 class UserProfileList(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserProfileSerializer
+    
     def get(self, request):
         user_profiles = UserProfile.objects.all()
+        user_profiles = user_profiles.filter(cosplayer=self.request.user)
         serializer = UserProfileSerializer(
             user_profiles, many=True, context={"request": request}
         )
