@@ -129,7 +129,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
-    "https://coscalendar-api-3bdc9b15f518.herokuapp.com/",
+    "https://coscalendar-api-3bdc9b15f518.herokuapp.com",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
