@@ -130,13 +130,15 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
-    "http://coscalendar-495a347f9b5a.herokuapp.com"
+    "http://coscalendar-495a347f9b5a.herokuapp.com",
+    "https://coscalendar-495a347f9b5a.herokuapp.com",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^http://127.0.0.1:\d+$",    
     r"^http://localhost:\d+$",
     r"^http://coscalendar-495a347f9b5a.herokuapp.com\d+$",
+    r"^https://coscalendar-495a347f9b5a.herokuapp.com\d+$",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
