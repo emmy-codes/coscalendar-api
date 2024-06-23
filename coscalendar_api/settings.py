@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication" 
-  ],
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+    ],
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
@@ -43,23 +43,23 @@ if "DEV" in os.environ:
     )
 
 REST_AUTH = {
-    "USE_JWT": True,  
+    "USE_JWT": True,
     'JWT_AUTH_COOKIE': 'my-app-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     # Configure the domain and path of the cookie
-    'JWT_AUTH_COOKIE_DOMAIN': None,  
-    'JWT_AUTH_COOKIE_PATH': '/',     
-    
+    'JWT_AUTH_COOKIE_DOMAIN': None,
+    'JWT_AUTH_COOKIE_PATH': '/',
+
     # Security settings
-    'JWT_AUTH_HTTPONLY': True,  
-    'JWT_AUTH_SAMESITE': 'None', 
-    'JWT_AUTH_SECURE': True,   
+    'JWT_AUTH_HTTPONLY': True,
+    'JWT_AUTH_SAMESITE': 'None',
+    'JWT_AUTH_SECURE': True,
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
 }
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'coscalendar_api.serializers.CurrentUserSerializer',
-    'TOKEN_SERIALIZER': 'dj_rest_auth.utils.JWTCookieAuthentication',  # noqa
+    'USER_DETAILS_SERIALIZER': 'coscalendar_api.serializers.CurrentUserSerializer',  # noqa
+    'TOKEN_SERIALIZER': 'dj_rest_auth.utils.JWTCookieAuthentication',
 }
 
 # Quick-start development settings - unsuitable for production
@@ -92,22 +92,16 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "cloudinary_storage",
     "cloudinary",
-
     "rest_framework",
     "django_filters",
     "rest_framework.authtoken",
-    
     "django.contrib.sites",
-    
     "dj_rest_auth.registration",
     "dj_rest_auth",
-
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    
     "corsheaders",
-    
     "user_profiles",
     "cosplans",
     "cosexpenses",
@@ -135,7 +129,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^http://127.0.0.1:\d+$",    
+    r"^http://127.0.0.1:\d+$",
     r"^http://localhost:\d+$",
     r"^http://coscalendar-495a347f9b5a.herokuapp.com\d+$",
     r"^https://coscalendar-495a347f9b5a.herokuapp.com\d+$",

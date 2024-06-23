@@ -10,7 +10,7 @@ from coscalendar_api.permissions import IsCosplayerOrReadOnly
 class UserProfileList(APIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserProfileSerializer
-    
+
     def get(self, request):
         user_profiles = UserProfile.objects.all()
         user_profiles = user_profiles.filter(cosplayer=self.request.user)
@@ -51,14 +51,14 @@ class UserProfileDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserProfileCreateOrUpdateView(generics.CreateAPIView, generics.UpdateAPIView):
+class UserProfileCreateOrUpdateView(generics.CreateAPIView, generics.UpdateAPIView):  # noqa
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def put(self, serializer):
         # connects the new UserProfile with the currently logged-in user
-        serializer.save(cosplayer=self.request.user) 
+        serializer.save(cosplayer=self.request.user)
 
     def get_object(self):
         # get the UserProfile object for the currently logged-in user

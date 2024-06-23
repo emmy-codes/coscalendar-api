@@ -9,7 +9,7 @@ class CosExpense(models.Model):
 
     # connects the expense to a specific cosplay
     cosplayer = models.ForeignKey(User, on_delete=models.CASCADE)
-    cosplan = models.ForeignKey(CosPlan,on_delete=models.CASCADE, default=1)
+    cosplan = models.ForeignKey(CosPlan, on_delete=models.CASCADE, default=1)
     item_name = models.CharField(max_length=100)
     quantity = models.PositiveIntegerField(default=1)
     unit_price = models.DecimalField(

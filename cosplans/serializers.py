@@ -14,7 +14,7 @@ class CosPlanSerializer(serializers.ModelSerializer):
         model = CosPlan
         fields = [
             "id",
-            "cosplayer", # displays username instead of ID
+            "cosplayer",  # displays username instead of ID
             "cosplay",
             "cosplan_task",
             "due_date",
