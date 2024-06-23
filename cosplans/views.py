@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import request
+from django.db.models import Q
 
 
 class CosPlanList(ListCreateAPIView):
@@ -38,7 +39,7 @@ class CosPlanList(ListCreateAPIView):
 
 class CosPlanListByDateRange(ListCreateAPIView):
     def get_queryset(self):
-        return CosPlan.objects.filter(due_date__range=[self.request.query_params.get("startDate"), self.request.query_params.get("endDate")]).order_by("due_date")
+        return CosPlan.objects.filter(Q(cosplayer=self.request.user), due_date__range=[self.request.query_params.get("startDate"), self.request.query_params.get("endDate")]).order_by("due_date")
     serializer_class = CosPlanSerializer
     permission_classes = [IsCosplayerOrReadOnly]
 
