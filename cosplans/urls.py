@@ -6,5 +6,6 @@ urlpatterns = [
     path("cosplans/", views.CosPlanList.as_view()),
     path("cosplansbyDateRange/", views.CosPlanListByDateRange.as_view()),
     path("cosplans/<int:pk>/", views.CosPlanDetail.as_view()),
+    path("cosplans/<int:pk>/expenses/", CosExpenseList.as_view()),
     path("cosplans/expenses/<int:pk>/", CosExpenseList.as_view()),
 ]
