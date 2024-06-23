@@ -69,7 +69,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get("ALLOWED_HOST"),
@@ -129,11 +129,13 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
+    "https://coscalendar-api-3bdc9b15f518.herokuapp.com/",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^http://127.0.0.1:\d+$",    
     r"^http://localhost:\d+$",
+    r"https://coscalendar-api-3bdc9b15f518.herokuapp.com/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
