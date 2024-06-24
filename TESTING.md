@@ -6,6 +6,8 @@ Each file in the backend was run through the Pep8 validator and, with a few exce
 
 ## Manual testing with Postman
 
+I was wondering how to really test my API from the APIs point of view, since the frontend was happily sending and receiving all data without issue, it seemed as though the backend would be working as planned. So I took a look at Postman.
+This allowed me to mimic situations and receive results without needing to perform the actual actions on the frontend. 
 The table is quite large and requires side scrolling to see the full output :) but I ran a few tests on fetching, putting and posting requests against my API, along with 2 results from no authentication. There is a  written response and matching screenshots from Postman:
 
 | Endpoint Name | Endpoint URL (with example query param or example id) | cURL (with example token) | Result | Image from Postman |
