@@ -1,5 +1,9 @@
 # Manual testing of CosCalendar API
 
+## Pep8 testing with CI validator
+
+Each file in the backend was run through the Pep8 validator and, with a few exceptions I made as I was unsure how to split them without causing errors (I added # noqa to solve it) the files are all Pep8 compliant.
+
 ## Manual testing with Postman
 
 The table is quite large and requires side scrolling to see the full output :) but I ran a few tests on fetching, putting and posting requests against my API, along with 2 results from no authentication. There is a  written response and matching screenshots from Postman:
