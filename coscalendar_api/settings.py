@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
@@ -56,6 +57,15 @@ REST_AUTH = {
     'JWT_AUTH_SECURE': True,
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
     'JWT_EXPIRATION_DELTA': timedelta(days=3),
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=8),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
 }
 
 REST_AUTH_SERIALIZERS = {
@@ -106,6 +116,7 @@ INSTALLED_APPS = [
     "user_profiles",
     "cosplans",
     "cosexpenses",
+    'rest_framework_simplejwt',
 ]
 
 SITE_ID = 1
