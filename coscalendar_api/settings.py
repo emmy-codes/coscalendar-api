@@ -55,6 +55,7 @@ REST_AUTH = {
     'JWT_AUTH_SAMESITE': 'None',
     'JWT_AUTH_SECURE': True,
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+    'JWT_EXPIRATION_DELTA': timedelta(days=3),
 }
 
 REST_AUTH_SERIALIZERS = {
